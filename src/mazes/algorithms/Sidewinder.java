@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Sidewinder
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         for (List<Cell> eachRow : grid.eachRow())
         {

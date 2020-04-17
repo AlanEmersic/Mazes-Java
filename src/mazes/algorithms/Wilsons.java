@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Wilsons
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         List<Cell> unvisited = new ArrayList<Cell>(grid.eachCell());
 

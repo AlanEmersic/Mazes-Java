@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HuntAndKill
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         Cell current = grid.randomCell();
 

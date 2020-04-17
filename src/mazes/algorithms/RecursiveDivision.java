@@ -5,7 +5,7 @@ import mazes.entity.Grid;
 
 public class RecursiveDivision
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         for (Cell cell : grid.eachCell())
             for (Cell n : cell.neighbors())
@@ -18,7 +18,8 @@ public class RecursiveDivision
 
     static void Divide(int row, int column, int height, int width, Grid grid)
     {
-        if (height <= 1 || width <= 1) // || height < 5 && width < 5 && Random.Range(0, 4) == 0 for rooms
+//      if (height <= 1 || width <= 1 || height < 5 && width < 5 && Random.Range(0, 4) == 0 for rooms
+        if (height <= 1 || width <= 1)
             return;
         if (height > width)
             DivideHorizontally(row, column, height, width, grid);

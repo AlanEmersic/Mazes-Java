@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BinaryTree
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         for (Cell cell : grid.eachCell())
         {

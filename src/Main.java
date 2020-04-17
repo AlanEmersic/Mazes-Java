@@ -1,6 +1,7 @@
 import mazes.algorithms.*;
 import mazes.entity.Grid;
 import mazes.entity.HexGrid;
+import mazes.entity.PolarGrid;
 
 import java.util.Random;
 
@@ -8,14 +9,15 @@ public class Main
 {
     enum Algorithm
     {
-        BinaryTree, AldousBroder, GrowingTree, HuntAndKill, Prims, RecursiveBacktracker, RecursiveDivision, Sidewinder,
-        Wilsons, Houstons
+        AldousBroder, BinaryTree, HuntAndKill, RecursiveBacktracker, Sidewinder,
+        Wilsons, Prims, TruePrims, Kruskals, GrowingTree, RecursiveDivision, Ellers, Houstons
     }
 
     public static void main(String[] args)
     {
-//        generateGridMaze(10);
-        generateHexMaze(10);
+        generateGridMaze(10);
+//        generatePolarMaze(10);
+//        generateHexMaze(10);
     }
 
     private static void generateGridMaze(int size)
@@ -23,7 +25,17 @@ public class Main
         Random random = new Random();
         int seed = random.nextInt();
         Grid grid = new Grid(size, size, seed);
-        grid = RandomAlgorithm(grid);
+        randomAlgorithm(grid);
+        grid.toPNG(50);
+        System.out.println("generated seed:" + seed);
+    }
+
+    private static void generatePolarMaze(int size)
+    {
+        Random random = new Random();
+        int seed = random.nextInt();
+        Grid grid = new PolarGrid(size, 1, seed);
+        randomAlgorithm(grid);
         grid.toPNG(50);
         System.out.println("generated seed:" + seed);
     }
@@ -33,12 +45,12 @@ public class Main
         Random random = new Random();
         int seed = random.nextInt();
         Grid grid = new HexGrid(size, size, seed);
-        Houstons.CreateMaze(grid);
+        randomAlgorithm(grid);
         grid.toPNG(50);
         System.out.println("generated seed:" + seed);
     }
 
-    private static Grid RandomAlgorithm(Grid grid)
+    private static void randomAlgorithm(Grid grid)
     {
         Random random = new Random();
         Algorithm algorithm = Algorithm.values()[random.nextInt(Algorithm.values().length)];
@@ -47,27 +59,44 @@ public class Main
         switch (algorithm)
         {
             case BinaryTree:
-                return BinaryTree.CreateMaze(grid);
+                BinaryTree.createMaze(grid);
+                break;
             case AldousBroder:
-                return AldousBroder.CreateMaze(grid);
+                AldousBroder.createMaze(grid);
+                break;
             case GrowingTree:
-                return GrowingTree.CreateMaze(grid);
+                GrowingTree.createMaze(grid);
+                break;
             case HuntAndKill:
-                return HuntAndKill.CreateMaze(grid);
+                HuntAndKill.createMaze(grid);
+                break;
             case Prims:
-                return Prims.CreateMaze(grid);
+                Prims.CreateMaze(grid);
+                break;
             case RecursiveBacktracker:
-                return RecursiveBacktracker.CreateMaze(grid);
+                RecursiveBacktracker.createMaze(grid);
+                break;
             case RecursiveDivision:
-                return RecursiveDivision.CreateMaze(grid);
+                RecursiveDivision.createMaze(grid);
+                break;
             case Sidewinder:
-                return Sidewinder.CreateMaze(grid);
+                Sidewinder.createMaze(grid);
+                break;
             case Wilsons:
-                return Wilsons.CreateMaze(grid);
+                Wilsons.createMaze(grid);
+                break;
             case Houstons:
-                return Houstons.CreateMaze(grid);
+                Houstons.createMaze(grid);
+                break;
+            case Ellers:
+                break;
+            case Kruskals:
+                Kruskals.createMaze(grid);
+                break;
+            case TruePrims:
+                TruePrims.createMaze(grid);
+                break;
             default:
-                return null;
         }
     }
 }

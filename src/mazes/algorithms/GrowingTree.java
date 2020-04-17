@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GrowingTree
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         Cell start = grid.randomCell();
         List<Cell> active = new ArrayList<Cell>();

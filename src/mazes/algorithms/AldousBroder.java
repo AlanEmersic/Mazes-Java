@@ -5,7 +5,7 @@ import mazes.entity.Grid;
 
 public class AldousBroder
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         Cell cell = grid.randomCell();
         int unvisited = grid.getSize() - 1;

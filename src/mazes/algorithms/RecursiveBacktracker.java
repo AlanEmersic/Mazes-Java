@@ -6,10 +6,11 @@ import mazes.entity.Grid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class RecursiveBacktracker
 {
-    public static Grid CreateMaze(Grid grid)
+    public static Grid createMaze(Grid grid)
     {
         Cell start = grid.randomCell();
         Stack<Cell> stack = new Stack<Cell>();
@@ -18,13 +19,7 @@ public class RecursiveBacktracker
         while (!stack.isEmpty())
         {
             Cell current = stack.peek();
-            List<Cell> neighbors = new ArrayList<Cell>();
-
-            current.neighbors().forEach((Cell e) ->
-            {
-                if (e.links().size() == 0)
-                    neighbors.add(e);
-            });
+            List<Cell> neighbors = current.neighbors().stream().filter(e -> e.links().size() == 0).collect(Collectors.toList());
 
             if (neighbors.size() == 0)
                 stack.pop();
