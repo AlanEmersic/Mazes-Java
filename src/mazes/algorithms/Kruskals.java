@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Kruskals
 {
-    private static class State
+    private class State
     {
         public List<Map.Entry<Cell, Cell>> neighbors;
         Map<Cell, Integer> setForCell;
@@ -68,7 +68,7 @@ public class Kruskals
 
     public static Grid createMaze(Grid grid)
     {
-        State state = new State(grid);
+        State state = new Kruskals().new State(grid);
         List<Map.Entry<Cell, Cell>> neighbors = state.neighbors.stream().sorted(Comparator.comparing(e -> grid.getRandom().nextInt(state.getNeighbors().size()))).collect(Collectors.toList());
 
         while (!neighbors.isEmpty())

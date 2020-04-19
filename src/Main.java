@@ -89,6 +89,7 @@ public class Main
                 Houstons.createMaze(grid);
                 break;
             case Ellers:
+                Ellers.createMaze(grid);
                 break;
             case Kruskals:
                 Kruskals.createMaze(grid);
