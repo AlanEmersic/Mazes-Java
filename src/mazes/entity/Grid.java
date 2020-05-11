@@ -79,18 +79,15 @@ public class Grid
 
     protected void configureCells()
     {
-        for (Cell[] cellRow : cells)
+        for (Cell cell : eachCell())
         {
-            for (Cell cell : cellRow)
-            {
-                int row = cell.getRow();
-                int col = cell.getCol();
+            int row = cell.getRow();
+            int col = cell.getCol();
 
-                cell.setNorth(checkCell(row - 1, col));
-                cell.setSouth(checkCell(row + 1, col));
-                cell.setWest(checkCell(row, col - 1));
-                cell.setEast(checkCell(row, col + 1));
-            }
+            cell.setNorth(checkCell(row - 1, col));
+            cell.setSouth(checkCell(row + 1, col));
+            cell.setWest(checkCell(row, col - 1));
+            cell.setEast(checkCell(row, col + 1));
         }
     }
 
@@ -121,8 +118,8 @@ public class Grid
     {
         List<Cell> list = new ArrayList<Cell>();
 
-        for (Cell[] cellRow : cells)
-            list.addAll(Arrays.asList(cellRow));
+        for (List<Cell> cellRow : eachRow())
+            list.addAll(cellRow);
 
         return list;
     }
