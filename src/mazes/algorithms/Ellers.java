@@ -14,11 +14,11 @@ public class Ellers
         Map<Integer, Integer> setForCell;
         int nextSet;
 
-        public RowState(int statingSet)
+        public RowState(int startingSet)
         {
             cellsInSet = new HashMap<>();
             setForCell = new HashMap<>();
-            nextSet = statingSet;
+            nextSet = startingSet;
         }
 
         public void record(int set, Cell cell)
